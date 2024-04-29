@@ -45,20 +45,48 @@ void MostarLista(queue<string> &listaMercado){
     }
 }
 
+void eliminarItem(queue<string> &listaMercado){
+
+    int decision;
+    if (listaMercado.empty()) {
+        cout << "La lista esta vacia." << endl;
+        return;
+    }else{
+    cout << "Item eliminado: " << endl;
+    cout << listaMercado.front() << endl;
+    listaMercado.pop();
+    cout << "//--------Menu----------//" << endl;
+    cout << "1. Eliminar otro item " << endl;
+    cout << "2. Volver al menu " << endl;
+    cout << "3. Salir " << endl;
+    cin >> decision;
+    if(decision == 1){
+        eliminarItem(listaMercado);
+    }
+    else if(decision == 2){
+        menu(listaMercado);
+    }else{
+        return;
+    }
+    }
+}
 
 void menu(queue<string> &listaMercado){
     
     int option;
     
-    cout << "//-------Menu---------/" << endl;
+    cout << "//------------Menu------------//" << endl;
     cout << "1. Agregar producto a la lista" << endl;
     cout << "2. Mostar lista" << endl;
-    cout << "3. Salir" << endl;
+    cout << "3. Tachar elemento de la lista" << endl;
+    cout << "4. Salir" << endl;
     cin >> option ;
     if (option == 1){
         agregarLista(listaMercado);
     }else if (option == 2){
         MostarLista(listaMercado);
+    }else if(option == 3){
+         eliminarItem(listaMercado);
     }else{
         return;
     }
